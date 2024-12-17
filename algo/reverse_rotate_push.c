@@ -25,7 +25,9 @@ void	push_b(t_stack_node **sa, t_stack_node **sb)
 	else
 		*sb = NULL;
 	(*sa)->prev = head;
-	head->next
+	head->next = *sa;
+	head->prev = NULL;
+	(*sa) = head;
 	ft_printf("pa\n");
 }
 
@@ -35,17 +37,14 @@ void	push(t_stack_node **sa, t_stack_node **sb, int n)
 
 	if (n == 1)
 	{
-		if (!*sa)
-			return ;
 		head = *sa;
 		*sa = (*sa)->next;
-		if (*sa)
-			(*sa)->prev = NULL;
-		head->next = *sb;
-		head->prev = NULL;
+		(*sa)->prev = NULL;
 		if (*sb)
 			(*sb)->prev = head;
-		*sb = head;
+		head->next = *sb;
+		head->prev = NULL;
+		(*sb) = head;
 		ft_printf("pb\n");
 	}
 	else if (n == 2)
@@ -57,15 +56,13 @@ void	reverse_rotate(t_stack_node **stack, int n)
 	t_stack_node	*last_node;
 	t_stack_node	*head;
 
-	if (!*stack || !(*stack)->next)
-		return ;
 	head = *stack;
 	last_node = find_last_node(*stack);
 	*stack = last_node;
 	last_node->next = head;
-	head->prev = last_node;
 	last_node->prev->next = NULL;
 	last_node->prev = NULL;
+	head->prev = last_node;
 	if (n == 1)
 		write(1, "rra\n", 4);
 	if (n == 2)
@@ -74,8 +71,6 @@ void	reverse_rotate(t_stack_node **stack, int n)
 
 void	rrr(t_stack_node **sa, t_stack_node **sb, int n)
 {
-	if (!sa || !sb)
-		return ;
 	reverse_rotate(sa, n);
 	reverse_rotate(sb, n);
 	if (!n)

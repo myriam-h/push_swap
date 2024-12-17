@@ -14,8 +14,6 @@
 
 void	transf_b_to_a(t_stack_node **sb, t_stack_node **sa)
 {
-	if (!*sb)
-		return ;
 	top_process(sa, (*sb)->target_node, 1);
 	push(sa, sb, 2);
 }

@@ -37,7 +37,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		result[i++] = *s1++;
 	while (*s2)
 		result[i++] = *s2++;
-	result[i++] = ' ';
-	result[i] = '\0';
+	result[i] = ' ';
+	result[++i] = '\0';
 	return (result);
 }

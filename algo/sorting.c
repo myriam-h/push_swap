@@ -16,11 +16,11 @@ t_stack_node	*find_last_node(t_stack_node *stack)
 {
 	t_stack_node	*last_node;
 
-	if (!stack)
-		return (NULL);
-	while (stack->next)
+	while (stack)
+	{
+		last_node = stack;
 		stack = stack->next;
-	last_node = stack;
+	}
 	return (last_node);
 }
 
@@ -28,8 +28,6 @@ t_stack_node	*find_minimum(t_stack_node *stack)
 {
 	t_stack_node	*minimum;
 
-	if (!stack)
-		return (NULL);
 	minimum = stack;
 	while (stack)
 	{
@@ -44,8 +42,6 @@ t_stack_node	*find_maximum(t_stack_node *stack)
 {
 	t_stack_node	*maximum;
 
-	if (!stack)
-		return (NULL);
 	maximum = stack;
 	while (stack)
 	{

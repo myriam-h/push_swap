@@ -43,8 +43,9 @@ void	sa_above_median_cost(t_stack_node *sa, int size_b)
 		if (sa->index < sa->target_node->index)
 			sa->push_cost = sa->target_node->index;
 	}
-	else if (sa->index != sa->target_node->index)
-		sa->push_cost += (size_b - sa->target_node->index);
+	else
+		if (!(sa->index == sa->target_node->index))
+			sa->push_cost += (size_b - sa->target_node->index);
 }
 
 void	set_push_cost(t_stack_node *sa, int size_a, int size_b)

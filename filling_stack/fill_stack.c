@@ -45,17 +45,12 @@ int	add_node(t_stack_node **sa, int num)
 	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
 	if (!new_node)
 		return (1);
-	new_node->data = num;
-	new_node->index = 0;
-	new_node->push_cost = 0;
-	new_node->cheapest_cost = false;
-	new_node->above_median = false;
-	new_node->target_node = NULL;
 	new_node->next = NULL;
-	new_node->prev = NULL;
+	new_node->data = num;
 	if (*sa == NULL)
 	{
 		*sa = new_node;
+		new_node->prev = NULL;
 	}
 	else
 	{
