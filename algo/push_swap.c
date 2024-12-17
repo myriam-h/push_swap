@@ -14,6 +14,8 @@
 
 void	sort(t_stack_node **sa, t_stack_node **sb, int numb_nodes)
 {
+	t_stack_node	*min;
+
 	push(sa, sb, 1);
 	numb_nodes--;
 	if (numb_nodes-- > 3 && !stack_in_ascend(*sa))
@@ -30,7 +32,8 @@ void	sort(t_stack_node **sa, t_stack_node **sb, int numb_nodes)
 		transf_b_to_a(sb, sa);
 	}
 	set_index(*sa);
-	minimum_cost_rotate(sa);
+	min = find_minimum(*sa);
+	min_pos(sa, min);
 }
 
 void	sort_3(t_stack_node **sa)
@@ -59,12 +62,8 @@ void	push_swap(t_stack_node **sa, t_stack_node **sb)
 	}
 }
 
-/* Helper function to handle rotation based on minimum node */
-static void	minimum_cost_rotate(t_stack_node **sa)
+void	min_pos(t_stack_node **sa, t_stack_node *min)
 {
-	t_stack_node	*min;
-
-	min = find_minimum(*sa);
 	if (min->above_median)
 	{
 		while (*sa != min)

@@ -12,17 +12,6 @@
 
 #include "../push_swap.h"
 
-void	ft_clean(char **arr, int i)
-{
-	i--;
-	while (i >= 0)
-	{
-		free(arr[i]);
-		i--;
-	}
-	free(arr);
-}
-
 int	ft_isspace(char c)
 {
 	return (c == 32 || (c >= 9 && c <= 13));
@@ -66,10 +55,7 @@ char	*malloc_number(const char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 			numb[j++] = str[i++];
 		else
-		{
-			free(numb);
-			return (NULL);
-		}
+			return (ft_free(numb));
 	}
 	numb[j] = '\0';
 	return (numb);
@@ -92,10 +78,7 @@ char	**ft_split(const char *str)
 		{
 			arr[i] = malloc_number(str);
 			if (arr[i] == NULL)
-			{
-				ft_clean(arr, i);
-				return (NULL);
-			}
+				return (ft_clean0(arr, i));
 			i++;
 		}
 		while (*str && !ft_isspace(*str))

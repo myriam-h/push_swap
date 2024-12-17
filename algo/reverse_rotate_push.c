@@ -16,8 +16,6 @@ void	push_b(t_stack_node **sa, t_stack_node **sb)
 {
 	t_stack_node	*head;
 
-	if (!*sb)
-		return ;
 	head = *sb;
 	if ((*sb)->next)
 	{
@@ -26,11 +24,8 @@ void	push_b(t_stack_node **sa, t_stack_node **sb)
 	}
 	else
 		*sb = NULL;
-	head->next = *sa;
-	head->prev = NULL;
-	if (*sa)
-		(*sa)->prev = head;
-	*sa = head;
+	(*sa)->prev = head;
+	head->next
 	ft_printf("pa\n");
 }
 
