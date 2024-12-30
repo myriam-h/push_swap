@@ -27,7 +27,7 @@ void	set_cheapest_cost(t_stack_node *sa)
 	lowest_cost = sa;
 	while (head)
 	{
-		if (lowest_cost->cheapest_cost > head->cheapest_cost)
+		if (lowest_cost->push_cost > head->push_cost)
 			lowest_cost = head;
 		head = head->next;
 	}

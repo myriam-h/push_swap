@@ -46,7 +46,7 @@ int	ft_check(char **argv)
 	while (argv[i])
 	{
 		num = ft_atoi(argv[i]);
-		if (!(num >= INT_MIN && num <= INT_MAX)
+		if (num == INT_MIN || num == INT_MAX
 			|| ft_is_dup(num, i - 1, arr))
 		{
 			free(arr);

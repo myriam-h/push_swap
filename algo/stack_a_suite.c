@@ -48,12 +48,10 @@ void	transf_a_to_b(t_stack_node **sa, t_stack_node **sb)
 	t_stack_node	*cheapest;
 
 	cheapest = is_cheapest_node(*sa);
-	if ((*sa)->above_median && (*sa)->target_node->above_median)
+	if (cheapest->above_median && cheapest->target_node->above_median)
 		rotate_same_time(sa, sb, cheapest);
-	else if (!(*sa)->above_median && !(*sa)->target_node->above_median)
+	else if (!cheapest->above_median && !cheapest->target_node->above_median)
 		reverse_rotate_same_time(sa, sb, cheapest);
-	else if (!(*sa)->above_median && (*sa)->target_node->above_median)
-		special_case(sa, sb, cheapest);
 	top_process(sa, cheapest, 1);
 	top_process(sb, cheapest->target_node, 2);
 	push(sa, sb, 1);

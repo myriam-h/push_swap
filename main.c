@@ -30,7 +30,7 @@ void	prog_exit(bool clean, t_stack_node **sa)
 	if (clean)
 		clean_stack(sa);
 	else
-		ft_printf("ERROR\n");
+		ft_printf("Error\n");
 	exit(1);
 }
 
