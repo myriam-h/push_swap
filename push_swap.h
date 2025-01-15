@@ -35,7 +35,7 @@ typedef struct s_stack_node
 void				clean_array(char **argv);
 void				prog_exit(bool clean, t_stack_node **sa);
 char				**one_arg(char **argv, t_stack_node **sa);
-int					ft_atoi(char *str);
+long				ft_atoi(char *str);
 void				ft_clean(char **arr, int i);
 int					ft_isspace(char c);
 int					count_words(const char *str);

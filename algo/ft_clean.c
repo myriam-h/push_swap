@@ -12,6 +12,19 @@
 
 #include "../push_swap.h"
 
+void	clean_array(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
+}
+
 void	ft_clean(char **arr, int i)
 {
 	i--;

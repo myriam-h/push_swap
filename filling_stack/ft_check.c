@@ -35,9 +35,9 @@ int	ft_size(char **argv)
 
 int	ft_check(char **argv)
 {
-	int	*arr;
-	int	i;
-	int	num;
+	long	num;
+	int		*arr;
+	int		i;
 
 	arr = (int *)malloc(sizeof(int) * ft_size(argv));
 	if (!arr)
@@ -46,12 +46,13 @@ int	ft_check(char **argv)
 	while (argv[i])
 	{
 		num = ft_atoi(argv[i]);
-		if (num == INT_MIN || num == INT_MAX
+		if (num < INT_MIN || num > INT_MAX
 			|| ft_is_dup(num, i - 1, arr))
 		{
 			free(arr);
 			return (1);
 		}
+		num = (int)(num);
 		arr[i++] = num;
 	}
 	free(arr);
